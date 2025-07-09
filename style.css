@@ -58,8 +58,7 @@ a:hover{
 }
 
 .logo{
-    font-size: 1.5rem;
-
+    font-size: 2.5rem;
 }
 
 .logo:hover{
@@ -151,9 +150,9 @@ a:hover{
 /* SECTIONS */
 
 section{
-    padding-top: 4vh;
-    height: 96vh;
-    margin: 0 10rem;
+    padding-top: 3vh;
+    height: 70vh;
+    margin: 0 9rem;
     box-sizing: border-box;
     min-height: fit-content;
 }
@@ -179,10 +178,11 @@ section{
 .section__text{
     align-self: center;
     text-align: center;
+    font-size: large;
 }
 
 .section__text p{
-    font-weight: 600;
+    font-weight: 500;
 
 }
 
@@ -190,7 +190,7 @@ section{
     text-align: center;
 }
 .section__text__p2{
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     margin-bottom: 1rem;
 }
 
@@ -280,6 +280,7 @@ section{
 .about-details-container{
     justify-content: center;
     flex-direction: column;
+    gap: 2rem;
 }
 
 .about-containers, .about-details-container{
@@ -337,11 +338,11 @@ section{
 }
 
 .article-container{
-    display: flex;
-    text-align: initial;
+    display:flex;
+    text-align: center;
     flex-wrap: wrap;
     flex-direction: row;
-    gap: 1.3rem;
+    gap: 1.4rem;
     justify-content: space-around;
 }
 
@@ -354,4 +355,83 @@ section{
 
 article .icon{
     cursor: default;
+}
+
+/* PROJECTS */
+
+#projects{
+    position: relative;
+}
+
+.color-container{
+    border-color: rgb(163, 163, 163);
+    background: rgb(250, 250, 250);
+}
+
+.project-img{ 
+    border-radius: 2.5rem;
+    width: 90%;
+    height: 90%;
+}
+
+.project-title{
+    margin: 1rem;
+    color: black;
+}
+
+.project-btn{
+    color: black;
+    border-color: rgb(163, 163, 163);
+}
+
+/* CONTACT */
+
+
+#contact{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 70vh;
+}
+
+.contact-info-upper-container{
+    display: flex;
+    justify-content: center;
+    border-radius: 2rem;
+    border: rgb(53, 53, 53) 0.1rem solid;
+    border-color: rgb(163, 163, 163);
+    background: (250, 250, 250);
+    margin: 1.5rem auto;
+    pad: 0.5rem;
+}
+
+.contact-info-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 1.5rem;
+}
+
+.contact-info-container p{
+    font-size: larger;
+
+}
+
+.contact-icon{
+    cursor: default;
+}
+
+.email-icon{
+    height: 2.5rem;
+}
+
+/* FOOTER SECTION */
+#footer{
+    height: 26vh;
+    margin: 0 1rem;
+}
+
+footer p{
+    text-align: center;
 }
