@@ -1,82 +1,106 @@
-/*General*/
+/* =========================================
+   1. DESIGN SYSTEM (VARIABLES)
+========================================= */
+:root {
+    /* Colors */
+    --bg-main: #FAFAFA;          /* Slightly off-white for less eye strain */
+    --bg-card: #FFFFFF;          /* Pure white for floating cards */
+    --text-dark: #111827;        /* Almost black for high contrast text */
+    --text-light: #6B7280;       /* Soft grey for secondary text */
+    --border-light: #E5E7EB;     /* Very subtle border color */
+    --color-dark: #1F2937;       /* Dark slate for buttons */
+    
+    /* Effects */
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Smoother animation curve */
+}
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* =========================================
+   2. GENERAL STYLES
+========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-
-*{
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
 }
 
-body{
-    font-family: "Poppins", sans-serif ;
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-dark);
 }
 
-html{
+html {
     scroll-behavior: smooth;
 }
 
-p{
-    color: rgb(85, 85, 85);
+p {
+    color: var(--text-light);
+    line-height: 1.6;
 }
 
-/* Transition  */
-a, 
-.btn{
-    transition: all 300ms ease;
+a, .btn {
+    transition: var(--transition);
 }
 
-/* Desktop Nav  */
-nav, 
-.nav-links{
+/* =========================================
+   3. DESKTOP NAVIGATION
+========================================= */
+nav, .nav-links {
     display: flex;
 }
 
-nav{
+nav {
     justify-content: space-around;
     align-items: center;
     height: 17vh;
 }
 
-.nav-links{
-    gap: 2rem;
+.nav-links {
+    gap: 2.5rem;
     list-style: none;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: 500;
 }
 
-a{
-    color: black;
+a {
+    color: var(--text-dark);
     text-decoration: none;
-    text-decoration-color: white;
 }
 
-a:hover{
-    color: grey;
+a:hover {
+    color: var(--text-light);
     text-decoration: underline;
-    text-underline-offset: .6rem;
-    text-decoration-color: rgb(181, 181, 181) ;
+    text-underline-offset: 0.6rem;
+    text-decoration-thickness: 2px;
 }
 
-.logo{
-    font-size: 2.5rem;
+.logo {
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: -0.05rem;
 }
 
-.logo:hover{
+.logo:hover {
     cursor: default;
 }
 
-/* Hamburger-menu */
-
-#hamburger-nav{
+/* =========================================
+   4. HAMBURGER MENU (MOBILE)
+========================================= */
+#hamburger-nav {
     display: none;
 }
 
-.hamburger-menu{
+.hamburger-menu {
     position: relative;
     display: inline-block;
 }
 
-.hamburger-icon{
+.hamburger-icon {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -85,353 +109,376 @@ a:hover{
     cursor: pointer;
 }
 
-.hamburger-icon span{
+.hamburger-icon span {
     width: 100%;
     height: 2px;
-    background-color: black;
-    transition: all 0.3 ease-in-out;
+    background-color: var(--text-dark);
+    transition: var(--transition);
 }
 
-.menu-links{
+.menu-links {
     position: absolute;
     top: 100%;
     right: 0%;
-    background-color: white;
+    background-color: var(--bg-card);
     width: fit-content;
     max-height: 0;
     overflow: hidden;
-    transition: all 0.3 ease-in-out;
+    transition: var(--transition);
+    box-shadow: var(--shadow-md);
+    border-radius: 1rem;
+    z-index: 100;
 }
 
-.menu-links a{
+.menu-links a {
     display: block;
-    padding: 10px;
+    padding: 15px 30px;
     text-align: center;
-    font-size: 1.5rem;
-    color: black;
+    font-size: 1.2rem;
+    color: var(--text-dark);
     text-decoration: none;
-    transition: all 0.3 ease-in-out;
 }
 
-.menu-links li{
-    list-style: none;
-}
-.menu-links ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
+.menu-links li { list-style: none; }
+.menu-links ul { list-style: none; padding: 0; margin: 0; }
 
-.menu-links.open{
-    max-height: 300px;
+.menu-links.open {
+    max-height: 350px;
     padding: 10px 0;
 }
 
-.hamburger-icon.open span:first-child{
-    transform: rotate(45deg) translate(10px, 5px);
-}
-.hamburger-icon.open span:nth-child(2){
-    opacity: 0;
-}
-.hamburger-icon.open span:last-child{
-    transform: rotate(-45deg) translate(10px, -5px);
-}
+/* Hamburger Animations */
+.hamburger-icon.open span:first-child { transform: rotate(45deg) translate(10px, 5px); }
+.hamburger-icon.open span:nth-child(2) { opacity: 0; }
+.hamburger-icon.open span:last-child { transform: rotate(-45deg) translate(10px, -5px); }
 
-.hamburger-icon span:first-child{
-    transform: none;
-}
-.hamburger-icon span:first-child{
-    opacity: 1;
-}
-.hamburger-icon span:first-child{
-    transform: none;
-}
-
-/* SECTIONS */
-
-section{
-    padding-top: 3vh;
-    height: 70vh;
-    margin: 0 9rem;
+/* =========================================
+   5. SECTIONS & CONTAINERS
+========================================= */
+section {
+    padding-top: 5vh;
+    min-height: 80vh;
+    margin: 0 10%;
     box-sizing: border-box;
-    min-height: fit-content;
 }
 
-.section-container{
+.section-container {
     display: flex;
+    gap: 4rem;
+    margin-top: 3rem;
 }
 
-/* PROFILE */
-#profile{
+.title {
+    font-size: 3rem;
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: -0.05rem;
+}
+
+.section__text__p1 {
+    text-align: center;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    font-size: 0.9rem;
+}
+
+/* =========================================
+   6. PROFILE SECTION
+========================================= */
+#profile {
     display: flex;
     justify-content: center;
     gap: 5rem;
     height: 80vh;
 }
-.section__pic-container{
+
+.section__pic-container {
     display: flex;
     height: 400px;
     width: 400px;
     margin: auto 0;
 }
 
-.section__text{
+.section__text {
     align-self: center;
     text-align: center;
-    font-size: large;
 }
 
-.section__text p{
+.section__text__p2 {
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
     font-weight: 500;
-
 }
 
-.section__text__p1{
-    text-align: center;
-}
-.section__text__p2{
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-}
-
-.title{
-    font-size: 3rem;
-    text-align: center;
-}
-
-.socials-container{
+#socials-container {
     display: flex;
     justify-content: center;
     margin-top: 1.5rem;
-    gap: 1rem;
+    gap: 1.5rem;
 }
 
-/* ICON */
-
-.icon{
+.icon {
     cursor: pointer;
     height: 2rem;
-    margin-top: 0.9rem;
+    transition: var(--transition);
 }
 
-/* BUTTONS */
-.btn-container{
+.icon:hover {
+    transform: translateY(-3px); /* Lifts social icons on hover */
+}
+
+/* =========================================
+   7. BUTTONS
+========================================= */
+.btn-container {
     display: flex;
     justify-content: center;
-    gap: 1rem;
+    gap: 1.5rem;
 }
 
-.btn{
+.btn {
     font-weight: 600;
-    transition: all 300ms ease;
     padding: 1rem;
-    width: 8rem;
+    width: 9rem;
     border-radius: 2rem;
+    cursor: pointer;
 }
 
-/* Contact button - solid dark grey, black on hover */
+/* Contact button - Solid */
 .btn-color-1 {
-    background: rgb(53, 53, 53);   /* dark grey */
+    background: var(--color-dark);
     color: white;
-    border: rgb(53, 53, 53) 0.1rem solid;
+    border: 2px solid var(--color-dark);
 }
 
 .btn-color-1:hover {
     background: black;
-    border: black 0.1rem solid;
-    color: white;
+    border-color: black;
+    transform: scale(1.05); /* Slight grow effect */
 }
 
-/* Download button - outline, black on hover */
+/* Download button - Outline */
 .btn-color-2 {
-    background: none;
-    color: black;
-    border: rgb(53, 53, 53) 0.1rem solid;
+    background: transparent;
+    color: var(--color-dark);
+    border: 2px solid var(--color-dark);
 }
 
 .btn-color-2:hover {
-    background: rgb(0, 0, 0);
+    background: var(--color-dark);
     color: white;
-    border: rgb(0, 0, 0) 0.1rem solid;
+    transform: scale(1.05);
 }
 
-/* Common button hover effect */
-.btn-color-1:hover,
-.btn-color-2:hover {
-    cursor: pointer;
-}
-
-.btn-container{
-    gap: 1rem;
-}
-
-/* ABOUT SECTION */
-#about{
+/* =========================================
+   8. ABOUT SECTION
+========================================= */
+#about {
     position: relative;
 }
 
-.about-containers{
-    gap: 1rem;
+.about-containers {
+    gap: 2rem;
     margin-bottom: 2rem;
-    margin-top: 1rem;
-
+    display: flex;
+    width: 100%;
 }
 
-.about-details-container{
+.about-details-container {
+    display: flex;
     justify-content: center;
     flex-direction: column;
-    gap: 2rem;
+    width: 100%;
 }
 
-.about-containers, .about-details-container{
-    display: flex;
+.about-pic {
+    border-radius: 2rem;
+    box-shadow: var(--shadow-md);
 }
 
-.about-pic{
-    border-radius: 2.5rem;
-}
-
-.arrow{
+.arrow {
     position: absolute;
     right: -5rem;
     bottom: 2.5rem;
+    height: 2.5rem;
 }
 
-.details-container{
-    padding: 1.5rem;
+/* CARDS (Used in About, Experience, Projects) */
+.details-container {
+    padding: 2rem;
     flex: 1;
-    background: white;
-    border-radius: 2rem;
-    border: rgb(53, 53, 53) 0.1rem solid;
-    border-color: rgb(163, 163, 163);
+    background: var(--bg-card);
+    border-radius: 1.5rem;
+    border: 1px solid var(--border-light);
+    box-shadow: var(--shadow-sm);
     text-align: center;
+    transition: var(--transition);
 }
 
-.section-container{
-    gap: 4rem;
-    height: 80%;
+.details-container:hover {
+    transform: translateY(-5px); /* Modern floating effect */
+    box-shadow: var(--shadow-md);
+    border-color: transparent;
 }
 
-.section__pic-container{
-    height: 400px;
-    width: 400px;
-    margin: auto 0;
-}
-
-/* EXPERIENCE */
-
-#experience{
+/* =========================================
+   9. EXPERIENCE SECTION
+========================================= */
+#experience {
     position: relative;
+    /* Adding padding to the bottom so the content NEVER touches the arrow */
+    padding-bottom: 5rem; 
 }
 
-.experience-sub-title{
-    color: rgb(85, 85, 85);
+/* 1. Stack the main category cards vertically */
+#experience .about-containers {
+    display: flex;
+    flex-direction: column; 
+    gap: 2rem;
+    width: 100%;
+}
+
+/* 2. Make the category cards span the available width */
+#experience .details-container {
+    width: 100%;
+}
+
+.experience-sub-title {
+    color: var(--text-dark);
     font-weight: 600;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     margin-bottom: 2rem;
 }
 
-.experience-details-container{
+.experience-details-container {
     display: flex;
     justify-content: center;
     flex-direction: column;
+    margin-top: 2rem;
 }
 
-.article-container{
-    display:flex;
-    text-align: center;
-    flex-wrap: wrap;
-    flex-direction: row;
-    gap: 1.4rem;
-    justify-content: space-around;
-}
-
-.article{
+/* 3. Keep the actual coding languages flowing horizontally inside the card */
+.article-container {
     display: flex;
-    width: 10rem;
-    justify-content: space-around;
-    gap: 0.5rem;
+    text-align: left;
+    flex-wrap: wrap; /* Allows items to drop to the next line if they run out of room */
+    flex-direction: row;
+    gap: 2rem;
+    justify-content: center; /* Centers the grid of languages nicely */
 }
 
-article .icon{
+article {
+    display: flex;
+    width: 8rem;
+    justify-content: flex-start;
+    gap: 0.4rem;
+    align-items: center;
+}
+
+article .icon {
     cursor: default;
+    height: 1.8rem;
+    margin: 0;
 }
 
-/* PROJECTS */
+article h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
 
-#projects{
+article p {
+    font-size: 0.8rem;
+}
+
+/* =========================================
+   10. PROJECTS SECTION
+========================================= */
+#projects {
     position: relative;
 }
 
-.color-container{
-    border-color: rgb(163, 163, 163);
-    background: rgb(250, 250, 250);
+.project-img { 
+    border-radius: 1rem;
+    width: 100%;
+    height: 250px;
+    object-fit: cover; /* Ensures images don't stretch weirdly */
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 1.5rem;
 }
 
-.project-img{ 
-    border-radius: 2.5rem;
-    width: 90%;
-    height: 90%;
+.project-title {
+    margin: 1rem 0;
+    color: var(--text-dark);
 }
 
-.project-title{
-    margin: 1rem;
-    color: black;
+.project-btn {
+    color: var(--text-dark);
+    border-color: var(--border-light);
 }
 
-.project-btn{
-    color: black;
-    border-color: rgb(163, 163, 163);
-}
-
-/* CONTACT */
-
-
-#contact{
+/* =========================================
+   11. CONTACT SECTION
+========================================= */
+#contact {
     display: flex;
     justify-content: center;
     flex-direction: column;
     height: 70vh;
 }
 
-.contact-info-upper-container{
+.contact-info-upper-container {
     display: flex;
     justify-content: center;
     border-radius: 2rem;
-    border: rgb(53, 53, 53) 0.1rem solid;
-    border-color: rgb(163, 163, 163);
-    background: (250, 250, 250);
-    margin: 1.5rem auto;
-    pad: 0.5rem;
+    border: 1px solid var(--border-light);
+    background: var(--bg-card);
+    margin: 3rem auto;
+    padding: 1rem 3rem;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
 }
 
-.contact-info-container{
+.contact-info-upper-container:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
+}
+
+.contact-info-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
-    margin: 1.5rem;
+    gap: 1rem;
+    margin: 1rem;
 }
 
-.contact-info-container p{
-    font-size: larger;
-
+.contact-info-container p {
+    font-size: 1.2rem;
+    font-weight: 500;
 }
 
-.contact-icon{
+.contact-icon {
     cursor: default;
 }
 
-.email-icon{
+.email-icon {
     height: 2.5rem;
 }
 
-/* FOOTER SECTION */
-#footer{
-    height: 26vh;
+/* =========================================
+   12. FOOTER
+========================================= */
+footer {
+    height: 20vh;
     margin: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
 }
 
-footer p{
+footer p {
     text-align: center;
+    font-size: 0.9rem;
 }
