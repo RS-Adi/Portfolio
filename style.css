@@ -391,6 +391,61 @@ article p {
     font-size: 0.8rem;
 }
 
+/* CERTIFICATION BADGES */
+.cert-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    justify-content: center;
+    align-items: flex-end;
+    margin-top: 1rem;
+}
+
+.cert-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    color: var(--text-dark);
+    transition: var(--transition);
+    width: 10rem;
+}
+/* Remove the messy underline on hover for cert cards */
+.cert-item:hover {
+    text-decoration: none;
+}
+.cert-icon {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    transition: var(--transition);
+}
+
+/* The Hover Effect */
+.cert-item:hover .cert-icon {
+    transform: scale(1.15) translateY(-5px);
+    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.15));
+}
+
+.cert-item:hover h3 {
+    color: var(--text-light);
+}
+
+.cert-text {
+    text-align: center;
+}
+
+.cert-text h3 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    line-height: 1.1;
+    margin-bottom: 0.3rem;
+}
+
+.cert-text p {
+    font-size: 0.85rem;
+}
 /* =========================================
    10. PROJECTS SECTION
 ========================================= */
