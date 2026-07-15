@@ -276,6 +276,7 @@ section {
 ========================================= */
 #about {
     position: relative;
+    min-height: 100dvh;
 }
 
 .about-containers {
@@ -293,7 +294,7 @@ section {
 }
 
 .about-pic {
-    border-radius: 2rem;
+    border-radius: 15rem;
     box-shadow: var(--shadow-md);
 }
 
@@ -314,6 +315,7 @@ section {
     box-shadow: var(--shadow-sm);
     text-align: center;
     transition: var(--transition);
+   
 }
 
 .details-container:hover {
